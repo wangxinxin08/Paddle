@@ -991,6 +991,7 @@ REGISTER_ACTIVATION_GPU_KERNEL(hard_shrink, HardShrink, HardShrinkFunctor,
 REGISTER_ACTIVATION_GPU_KERNEL(hard_sigmoid, HardSigmoid, HardSigmoidFunctor,
                                HardSigmoidGradFunctor);
 REGISTER_ACTIVATION_GPU_KERNEL(swish, Swish, SwishFunctor, SwishGradFunctor);
+REGISTER_ACTIVATION_GPU_KERNEL(mish, Mish, MishFunctor, MishGradFunctor);
 REGISTER_ACTIVATION_GPU_KERNEL(thresholded_relu, ThresholdedRelu,
                                ThresholdedReluFunctor,
                                ThresholdedReluGradFunctor);
