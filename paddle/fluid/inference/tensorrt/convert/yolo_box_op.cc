@@ -48,9 +48,13 @@ class YoloBoxOpConverter : public OpConverter {
     float conf_thresh = BOOST_GET_CONST(float, op_desc.GetAttr("conf_thresh"));
     bool clip_bbox = BOOST_GET_CONST(bool, op_desc.GetAttr("clip_bbox"));
     float scale_x_y = BOOST_GET_CONST(float, op_desc.GetAttr("scale_x_y"));
-    bool iou_aware = BOOST_GET_CONST(bool, op_desc.GetAttr("iou_aware"));
+    bool iou_aware = op_desc.HasAttr("iou_aware")
+                         ? BOOST_GET_CONST(bool, op_desc.GetAttr("iou_aware"))
+                         : false;
     float iou_aware_factor =
-        BOOST_GET_CONST(float, op_desc.GetAttr("iou_aware_factor"));
+        op_desc.HasAttr("iou_aware_factor")
+            ? BOOST_GET_CONST(float, op_desc.GetAttr("iou_aware_factor"))
+            : 0.5;
 
     int type_id = static_cast<int>(engine_->WithFp16());
     auto input_dim = X_tensor->getDimensions();
